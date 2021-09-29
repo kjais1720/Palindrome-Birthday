@@ -115,35 +115,43 @@ h2#result{
     margin: 30px;
 }
 
-@keyframes fluidBG {
-    0%{
-        background-image: linear-gradient(45deg, #0f1657 20%, #008080);
-    }
-    10%{
-        background-image: linear-gradient(45deg, #0f1657 40%, #008080);
-    }
-    22%{
-        background-image: linear-gradient(45deg, #0f1657 60%, #008080);
-    }
-    33%{
-        background-image: linear-gradient(45deg, #0f1657 80%, #008080);
-    }
-    44%{
-        background-image: linear-gradient(45deg, #0f1657 100%, #008080);
-    }
-    55%{
-        background-image: linear-gradient(45deg, #0f1657 80%, #008080);
-    }
-    66%{
-        background-image: linear-gradient(45deg, #0f1657 60%, #008080);
-    }
-    77%{
-        background-image: linear-gradient(45deg, #0f1657 40%, #008080);
-    }
-    88%{
-        background-image: linear-gradient(45deg, #008080 20%, #0f1657);
-    }
-    100%{
-        background-image: linear-gradient(45deg, #008080 0%, #0f1657);
-    }         
+footer{
+    min-height: 25vh;
+    position: relative;
+    font-family: 'Montseerrat Alternates',serif;
+}
+.footer-links{
+    display: flex;
+    gap: 5vw;
+    justify-content: center;
+    align-items: center;
+    margin: 2% auto;
+}
+footer a{
+    text-decoration: none;
+    color: #008080;
+    font-weight: 800;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    transition: all ease 0.5s;
+}
+
+footer a:hover{
+    transform: scale(1.1);
+    color: #0f1657;
+}
+
+#copyright{
+    font-size: 1rem;
+}
+
+#copyright a{
+    font-size: 1rem;
+    text-decoration: none;
+    color: #0f1657;
+}
+
+#copyright a:hover{
+    transform: scale(1.5);
+    color: #008080;
 }
