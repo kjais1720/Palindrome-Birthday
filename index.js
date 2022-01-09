@@ -1,20 +1,20 @@
 
-function reverseString(str){
+let reverseString = str =>{
     str = str.split('').reverse().join('')
     return str;
 }
 
-function getAllDateFormats(date){
-    var ddmmyyyy= date.day+date.month+date.year;
-    var mmddyyyy= date.month+date.day+date.year;
-    var yyyymmdd= date.year+date.month+date.day;
-    var ddmmyy= date.day+date.month+date.year.slice(2);
-    var mmddyy= date.month+date.day+date.year.slice(2);
-    var yyddmm= date.year.slice(2)+date.day+date.month;
+let getAllDateFormats = date =>{
+    let ddmmyyyy= date.day+date.month+date.year;
+    let mmddyyyy= date.month+date.day+date.year;
+    let yyyymmdd= date.year+date.month+date.day;
+    let ddmmyy= date.day+date.month+date.year.slice(2);
+    let mmddyy= date.month+date.day+date.year.slice(2);
+    let yyddmm= date.year.slice(2)+date.day+date.month;
     return {'ddmmyyyy':ddmmyyyy,'mmddyyyy':mmddyyyy,'yyyymmdd':yyyymmdd,'ddmmyy':ddmmyy,'mmddyy':mmddyy,'yyddmm':yyddmm};
 }
 
-function getStringDate(date){
+let getStringDate = date =>{
     if(date.day<10 && date.day.length<2){
         date.day = '0'+date.day;
     } else{
@@ -31,7 +31,7 @@ function getStringDate(date){
 
 }
 
-function checkPalindromeForAllDateFormats(date){
+let checkPalindromeForAllDateFormats = date =>{
     date = getStringDate(date);
     const dateFormats = getAllDateFormats(date);
     let reversedDate;
@@ -45,13 +45,13 @@ function checkPalindromeForAllDateFormats(date){
     return result;
 }
 
-function isLeapYear(year){
+let isLeapYear = year =>{
     if(year % 400 === 0) return true;
     if(year % 4 === 0 && year % 100 != 0) return true;
     return false;
 }
 
-function getNextDate(date){
+let getNextDate = date => {
     let day = Number(date.day)+1;
     let month = date.month;
     let year = date.year;
@@ -80,10 +80,10 @@ function getNextDate(date){
     return {day:day,month:month,year:year};
 }
 
-function getPrevDate(date){
-    var day = Number(date.day)-1;
-    var month = date.month;
-    var year = date.year;
+let getPrevDate = date =>{
+    let day = Number(date.day)-1;
+    let month = date.month;
+    let year = date.year;
     const daysInMonths = [31,28,31,30,31,30,31,31,30,31,30,31];
 
     if(day < 1){
@@ -108,10 +108,10 @@ function getPrevDate(date){
     return {day:day,month:month,year:year};
 }
 
-function findNextPalindrome(date){
+let findNextPalindrome = date =>{
     let counter = 1;
     let palindromeDates;
-    var nextDate;
+    let nextDate;
     nextDate = getNextDate(date);
     while(1){  
         palindromeDates = checkPalindromeForAllDateFormats(nextDate)
@@ -123,9 +123,9 @@ function findNextPalindrome(date){
     }
 }
 
-function findPrevPalindrome(date){
-    var counter = 1;
-    var prevDate;
+let findPrevPalindrome = date => {
+    let counter = 1;
+    let prevDate;
     prevDate = getPrevDate(date);
     let palindromeDates;
     while(1){
@@ -138,18 +138,18 @@ function findPrevPalindrome(date){
     }
 }
 
-function destructureInputDate(date){
+let destructureInputDate = date =>{
     let result;
     const [year,month,day] = date.split('-')
     return {day:day, month:month, year:year}
 }
 
-function returnFormattedDate(date){
+let returnFormattedDate = date => {
     date = getStringDate(date)
     return date.day+'-'+date.month+'-'+date.year;
 }
 
-function clickHandler(){
+let clickHandler = () => {
     const bdateInput = document.querySelector('input');
     const output = document.querySelector('#result');
     const bdate = destructureInputDate(bdateInput.value);
@@ -162,7 +162,6 @@ function clickHandler(){
             const [counter1, prevPalindrome, dateAndFormat1] = findPrevPalindrome(bdate);
             const [counter2, nextPalindrome, dateAndFormat2] = findNextPalindrome(bdate);
 
-            console.log(dateAndFormat1,dateAndFormat2)
             if(counter1<counter2){
                 output.innerText = `The nearest palindrome date was ${returnFormattedDate(prevPalindrome)} ( ${dateAndFormat1[0][1]} in ${dateAndFormat1[0][0]} format ) . You missed it by ${counter1} days.`
             } else{
